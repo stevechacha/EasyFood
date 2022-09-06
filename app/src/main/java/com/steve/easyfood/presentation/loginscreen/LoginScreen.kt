@@ -9,11 +9,11 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.toArgb
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.SpanStyle
 import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.withStyle
@@ -24,13 +24,11 @@ import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import com.steve.easyfood.R
 import com.steve.easyfood.presentation.component.StandardTextField
-import com.steve.easyfood.presentation.component.StandardToolbar
 import com.steve.easyfood.presentation.destinations.HomeScreenDestination
 import com.steve.easyfood.presentation.destinations.RegisterScreenDestination
 import com.steve.easyfood.presentation.ui.theme.SpaceLarge
 import com.steve.easyfood.presentation.ui.theme.SpaceMedium
-import com.steve.easyfood.ui.theme.EasyFoodTheme
-import com.steve.easyfood.ui.theme.darkGreen
+import com.steve.easyfood.presentation.ui.theme.darkGreen
 
 @Composable
 @Destination
@@ -58,11 +56,13 @@ fun LoginScreen(
         Text(text = "Login",
             fontSize = 28.sp,
             color= darkGreen,
-            fontWeight = FontWeight.Bold
+            fontWeight = FontWeight.Bold,
+            style = MaterialTheme.typography.body2
         )
         Text(text = "Please sign in to continue",
             color = darkGreen,
-            fontSize = 18.sp
+            fontSize = 18.sp,
+            style = MaterialTheme.typography.body1
         )
         Spacer(modifier = Modifier.height(SpaceMedium))
                 StandardTextField(
@@ -95,7 +95,7 @@ fun LoginScreen(
                         .padding(end = SpaceLarge),
                     text=stringResource(id = R.string.forgot_password),
                     color = Color.DarkGray,
-                    fontWeight = FontWeight.Bold
+                    style = MaterialTheme.typography.body1,
                 )
         Spacer(modifier = Modifier.height(SpaceMedium))
 
@@ -116,7 +116,8 @@ fun LoginScreen(
             Text(
                 text = "Login",
                 color = Color.White,
-                fontSize = 18.sp
+                fontSize = 18.sp,
+                style = MaterialTheme.typography.body2
             )
         }
 
@@ -135,14 +136,14 @@ fun LoginScreen(
                     append(signUpText)
                 }
             },
-            style = MaterialTheme.typography.body1,
+            style = MaterialTheme.typography.caption,
             modifier = Modifier
                 .clickable {
                            navigator.navigate(RegisterScreenDestination)
 
 
                 },
-            color = Color.DarkGray
+            color = Color.DarkGray,
         )
 
 

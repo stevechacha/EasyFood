@@ -4,7 +4,6 @@ import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material.*
@@ -13,9 +12,7 @@ import androidx.compose.material.icons.filled.Visibility
 import androidx.compose.material.icons.filled.VisibilityOff
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.Outline
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.semantics.semantics
@@ -26,11 +23,8 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import com.steve.easyfood.util.TestTags
 import com.steve.easyfood.R
-import com.steve.easyfood.presentation.ui.theme.SpaceLarge
-import com.steve.easyfood.ui.theme.Purple500
 
 @Composable
 fun StandardTextField(
@@ -48,7 +42,7 @@ fun StandardTextField(
     onValueChange: (String) -> Unit,
     error: String = "",
     style: TextStyle = TextStyle(
-        color = Color.DarkGray
+        color = MaterialTheme.colors.onBackground
     )
 
 ) {
@@ -64,11 +58,13 @@ fun StandardTextField(
                     onValueChange(it)
                 }
             },
+
             maxLines = maxLines,
             textStyle = style,
             placeholder = {
                 Text(
                     text = hint,
+                    style = MaterialTheme.typography.body1,
                     color= Color.DarkGray
                 )
             },

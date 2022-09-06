@@ -4,28 +4,24 @@ package com.steve.easyfood.presentation.welcomescreen
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.ButtonDefaults
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.platform.LocalTextInputService
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import com.steve.easyfood.R
-import com.steve.easyfood.presentation.destinations.LocationScreenDestination
 import com.steve.easyfood.presentation.destinations.LoginScreenDestination
-import com.steve.easyfood.presentation.ui.theme.SpaceLarge
-import com.steve.easyfood.ui.theme.darkGreen
+import com.steve.easyfood.presentation.ui.theme.darkGreen
 
 @Composable
 @Destination
@@ -49,9 +45,11 @@ fun WelcomeScreen(
             text ="We delivery your food at your\n" +
                 "   doorstep at the best time",
             color = Color.White,
-            fontSize = 25.sp
+            fontSize = 22.sp,
+            fontFamily = FontFamily.Serif
+
         )
-        Spacer(modifier = Modifier.height(10.dp))
+        Spacer(modifier = Modifier.height(14.dp))
 
         Button(
             shape= RoundedCornerShape(50.dp),
@@ -62,7 +60,7 @@ fun WelcomeScreen(
                     start = 50.dp,
                     end = 50.dp
 
-                    )
+                )
             ,
             colors = ButtonDefaults.buttonColors(contentColor = Color.Red, backgroundColor = Color.White),
             onClick = {
@@ -72,7 +70,8 @@ fun WelcomeScreen(
             Text(
                 text = "Get Started",
                 color = darkGreen,
-                fontSize = 20.sp
+                fontSize = 20.sp,
+                style = MaterialTheme.typography.body2
             )
         }
 

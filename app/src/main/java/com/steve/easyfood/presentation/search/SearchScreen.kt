@@ -3,7 +3,6 @@ package com.steve.easyfood.presentation.search
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Card
@@ -22,7 +21,7 @@ import androidx.compose.ui.unit.dp
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import com.steve.easyfood.presentation.menuscreen.CardItem
-import com.steve.easyfood.ui.theme.darkGreen
+import com.steve.easyfood.presentation.ui.theme.darkGreen
 import com.steve.easyfood.R
 import com.steve.easyfood.presentation.component.SearchToolbar
 

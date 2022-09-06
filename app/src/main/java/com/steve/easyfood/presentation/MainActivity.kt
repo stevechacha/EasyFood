@@ -1,4 +1,4 @@
-package com.steve.easyfood
+package com.steve.easyfood.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -7,23 +7,17 @@ import androidx.compose.animation.ExperimentalAnimationApi
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.toArgb
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.google.accompanist.navigation.animation.rememberAnimatedNavController
 import com.ramcosta.composedestinations.DestinationsNavHost
 import com.ramcosta.composedestinations.rememberNavHostEngine
-import com.steve.easyfood.presentation.NavGraphs
 import com.steve.easyfood.presentation.component.StandardScaffold
 import com.steve.easyfood.presentation.destinations.*
-import com.steve.easyfood.ui.theme.EasyFoodTheme
-import com.steve.easyfood.ui.theme.darkGreen
+import com.steve.easyfood.presentation.ui.theme.EasyFoodTheme
+import com.steve.easyfood.presentation.ui.theme.darkGreen
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

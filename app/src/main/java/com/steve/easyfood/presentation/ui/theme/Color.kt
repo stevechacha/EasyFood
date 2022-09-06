@@ -1,4 +1,4 @@
-package com.steve.easyfood.ui.theme
+package com.steve.easyfood.presentation.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
@@ -14,3 +14,10 @@ val primaryDarkVariant = Color(0xFF393939)
 val primaryPink = Color(0xFFFE0A58)
 val primaryGray = Color(0xFF828588)
 val lightGray = Color(0xFFF7F7F7)
+
+val DarkGray = Color(0xFF202020)
+val MediumGray = Color(0xFF404040)
+val TextWhite = Color(0xFFEEEEEE)
+val HintGray = Color(0xFF6D6D6D)
+val TextGray = Color(0xFFA6A6A6)
+val GreenAccent = Color(0xFF08FF04)

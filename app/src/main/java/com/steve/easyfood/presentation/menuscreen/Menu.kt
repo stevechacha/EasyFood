@@ -1,17 +1,12 @@
 package com.steve.easyfood.presentation.menuscreen
 
-import android.widget.Space
-import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.border
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
-import androidx.compose.material.icons.filled.Email
 import androidx.compose.material.icons.filled.Forward
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -27,8 +22,7 @@ import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import com.steve.easyfood.R
 import com.steve.easyfood.presentation.component.StandardToolbar
-import com.steve.easyfood.presentation.mainscreen.MainScreen
-import com.steve.easyfood.ui.theme.darkGreen
+import com.steve.easyfood.presentation.ui.theme.darkGreen
 
 @Composable
 @Destination
@@ -36,7 +30,8 @@ fun Menu(
     navigator: DestinationsNavigator
 ) {
     Column (
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier
+            .fillMaxSize()
             .background(darkGreen)
     ) {
         StandardToolbar(
@@ -47,8 +42,15 @@ fun Menu(
                     horizontalAlignment = Alignment.CenterHorizontally,
                     modifier = Modifier.padding(start = 20.dp)
                 ) {
-                    Text(text = "Location")
-                    Text(text = "location2")
+                    Text(text = "Location",
+                        style = MaterialTheme.typography.body1
+                    )
+//                    Spacer(modifier = Modifier.height(5.dp))
+                    Text(
+                        text = "location",
+                        style = MaterialTheme.typography.body1
+
+                    )
                 }
             },
             showBackArrow = true,
@@ -122,14 +124,15 @@ fun CardItem() {
                         .width(250.dp)
                         .padding(10.dp)
                 ){
-                    Text(text = "Username", maxLines = 1,
-                        fontSize = 15.sp,
-                        fontWeight = FontWeight.Bold
+                    Text(
+                        text = "Username" ,
+                        maxLines = 1,
+                        style= MaterialTheme.typography.body1,
                     )
                     Spacer(modifier = Modifier.height(5.dp))
                     Text(text = "Description",
-                        fontSize = 12.sp,
-                        maxLines = 3
+                        maxLines = 3,
+                        style = MaterialTheme.typography.body2
                     )
                 }
                 Image(imageVector = Icons.Filled.Forward,

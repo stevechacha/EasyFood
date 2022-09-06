@@ -1,10 +1,10 @@
-package com.steve.easyfood.presentation.confirmlocationscreen
+package com.steve.easyfood.presentation.morescreen
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.ViewModel
 
-class LocationViewModel: ViewModel() {
+class MoreViewModel: ViewModel() {
 
     private val _cityText = mutableStateOf("")
     val cityText: State<String> = _cityText
@@ -15,7 +15,6 @@ class LocationViewModel: ViewModel() {
     fun setCityText(city: String) {
         _cityText.value = city
     }
-
     fun setAreaText(area: String) {
         _areaText.value = area
     }

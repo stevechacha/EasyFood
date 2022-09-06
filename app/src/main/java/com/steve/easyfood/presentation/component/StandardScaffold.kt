@@ -1,10 +1,8 @@
 package com.steve.easyfood.presentation.component
 
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
 import androidx.compose.runtime.Composable
@@ -18,9 +16,7 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import com.steve.easyfood.domain.model.BottomNavItem
-import com.steve.easyfood.ui.theme.darkGreen
-import com.steve.easyfood.ui.theme.primaryGray
-import com.steve.easyfood.ui.theme.primaryPink
+import com.steve.easyfood.presentation.ui.theme.darkGreen
 
 
 @Composable

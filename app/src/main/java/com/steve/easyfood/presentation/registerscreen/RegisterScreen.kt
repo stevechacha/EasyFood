@@ -6,8 +6,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -25,14 +23,12 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import com.steve.easyfood.R
-import com.steve.easyfood.presentation.component.SearchToolbar
 import com.steve.easyfood.presentation.component.StandardTextField
-import com.steve.easyfood.presentation.component.StandardToolbar
 import com.steve.easyfood.presentation.destinations.HomeScreenDestination
 import com.steve.easyfood.presentation.destinations.LoginScreenDestination
 import com.steve.easyfood.presentation.ui.theme.SpaceLarge
 import com.steve.easyfood.presentation.ui.theme.SpaceMedium
-import com.steve.easyfood.ui.theme.darkGreen
+import com.steve.easyfood.presentation.ui.theme.darkGreen
 
 @Composable
 @Destination
@@ -60,15 +56,17 @@ fun RegisterScreen(
             text = "Sign Up",
             fontSize = 25.sp,
             color = Color.Green,
+            style= MaterialTheme.typography.body2,
             fontWeight = FontWeight.Bold
         )
         Text(text = "Create an account to continue",
             color = Color.DarkGray,
-            fontSize = 18.sp
+            fontSize = 18.sp,
+            style = MaterialTheme.typography.body1
 
         )
 
-        Spacer(modifier = androidx.compose.ui.Modifier.height(SpaceMedium))
+        Spacer(modifier = Modifier.height(SpaceMedium))
         StandardTextField(
             text = viewModel.emailText.value,
             onValueChange = {
@@ -125,7 +123,7 @@ fun RegisterScreen(
         ) {
             Text(
                 text = "Sign Up",
-                color = Color.DarkGray,
+                color = Color.White,
                 fontSize = 18.sp
             )
         }
@@ -139,20 +137,21 @@ fun RegisterScreen(
                 val signUpText = stringResource(id = R.string.sign_in)
                 withStyle(
                     style = SpanStyle(
-                        color = darkGreen
+                        color = darkGreen,
+
                     )
                 ) {
                     append(signUpText)
                 }
             },
-            style = MaterialTheme.typography.body1,
+            style = MaterialTheme.typography.caption,
             modifier = Modifier
                 .clickable {
                            navigator.navigate(LoginScreenDestination)
 
-
                 },
-            color = Color.DarkGray
+            color = Color.DarkGray,
+
         )
 
 

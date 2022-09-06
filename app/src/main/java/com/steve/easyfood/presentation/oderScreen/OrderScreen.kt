@@ -18,10 +18,9 @@ import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import com.steve.easyfood.presentation.component.SearchToolbar
 import com.steve.easyfood.presentation.component.StandardDiver
-import com.steve.easyfood.presentation.component.StandardToolbar
 import com.steve.easyfood.presentation.destinations.LocationScreenDestination
-import com.steve.easyfood.ui.theme.EasyFoodTheme
-import com.steve.easyfood.ui.theme.darkGreen
+import com.steve.easyfood.presentation.ui.theme.EasyFoodTheme
+import com.steve.easyfood.presentation.ui.theme.darkGreen
 
 @Composable
 @Destination
@@ -32,7 +31,8 @@ fun OrderScreen(
             android.graphics.Color.parseColor("#121212")
         Surface (
             modifier = Modifier.fillMaxSize(),
-            color = darkGreen){
+            color = darkGreen
+        ){
 
             Column(
                 modifier = Modifier
