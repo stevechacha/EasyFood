@@ -4,6 +4,9 @@ import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -23,7 +26,9 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import com.steve.easyfood.R
+import com.steve.easyfood.presentation.component.SearchToolbar
 import com.steve.easyfood.presentation.component.StandardTextField
+import com.steve.easyfood.presentation.component.StandardToolbar
 import com.steve.easyfood.presentation.destinations.HomeScreenDestination
 import com.steve.easyfood.presentation.destinations.RegisterScreenDestination
 import com.steve.easyfood.presentation.ui.theme.SpaceLarge
@@ -41,7 +46,7 @@ fun LoginScreen(
         horizontalAlignment = Alignment.CenterHorizontally ,
         modifier= Modifier
             .fillMaxSize()
-            .background(Color.White)
+            .background(MaterialTheme.colors.onBackground)
             ){
 
         Spacer(modifier = Modifier.height(10.dp))
@@ -52,7 +57,7 @@ fun LoginScreen(
             painter = painterResource(id = R.drawable.app_logo),
             contentDescription = " App Logo"
         )
-        Spacer(modifier = Modifier.height(40.dp))
+        Spacer(modifier = Modifier.height(30.dp))
         Text(text = "Login",
             fontSize = 28.sp,
             color= darkGreen,

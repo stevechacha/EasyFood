@@ -169,6 +169,9 @@ fun TotalItem() {
         Text(text = "Comment(Optional)",
             modifier = Modifier.align(Alignment.Start)
         )
+        Button(onClick = { /*TODO*/ }) {
+
+        }
 
     }
 

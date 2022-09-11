@@ -3,12 +3,12 @@ package com.steve.easyfood.presentation.search
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.LazyRow
+import androidx.compose.foundation.lazy.itemsIndexed
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.Card
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
-import androidx.compose.material.Text
+import androidx.compose.material.*
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Search
 import androidx.compose.runtime.*
@@ -24,6 +24,7 @@ import com.steve.easyfood.presentation.menuscreen.CardItem
 import com.steve.easyfood.presentation.ui.theme.darkGreen
 import com.steve.easyfood.R
 import com.steve.easyfood.presentation.component.SearchToolbar
+import com.steve.easyfood.presentation.ui.theme.lightGray
 
 @Composable
 @Destination
@@ -46,12 +47,21 @@ fun SearchScreen(
                 SearchToolbar(
                     navigator =navigator,
                     title = {
-                        Text(text = "SearchToolBar")
+                        Text(
+                            text = "SearchToolBar",
+                            style = MaterialTheme.typography.body2
+                        )
                     },
                     navActions = {
                         IconButton(onClick = { /*TODO*/ }) {
-                            Icon(imageVector =Icons.Filled.Search
-                                , contentDescription = null
+                            Icon(imageVector =Icons.Filled.Search,
+                                contentDescription = null,
+                                tint = Color.DarkGray,
+                                modifier = Modifier
+                                    .width(30.dp)
+                                    .height(20.dp)
+                                    .background(Color.White)
+                                    .clip(RoundedCornerShape(10.dp))
                             )
                         }
 
@@ -59,7 +69,6 @@ fun SearchScreen(
                     showBackArrow = true,
                     modifier = Modifier.fillMaxWidth()
                 )
-
 
                 Spacer(modifier = Modifier.height(120.dp))
 
@@ -75,12 +84,17 @@ fun SearchScreen(
                     Column(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .padding(25.dp)
+                            .padding(20.dp)
                     ) {
-                        Text(text = "Choose Burger")
-                        Spacer(modifier = Modifier.height(20.dp))
-                        Text(text = "Simba Super Market")
-                        Spacer(modifier = Modifier.height(25.dp))
+                        Text(
+                            text = "Choose Burger",
+                            style = MaterialTheme.typography.h2
+                        )
+                        Spacer(modifier = Modifier.height(5.dp))
+                        Text(text = "Simba Super Market",
+                            style = MaterialTheme.typography.body1
+                        )
+                        Spacer(modifier = Modifier.height(8.dp))
 
                         // Rating
                         Row(
@@ -111,35 +125,35 @@ fun TimesCard() {
         modifier = Modifier
             .height(500.dp)
             .clip(RoundedCornerShape(topStart = 35.dp, topEnd = 35.dp))
-            .background(Color.White)
+            .background(lightGray)
     ) {
-        CardItem()
-        Spacer(modifier = Modifier.height(5.dp))
-        CardItem()
-        Spacer(modifier = Modifier.height(5.dp))
-        CardItem()
+        LazyColumn{
+            itemsIndexed((1..4).toList()){ index, coin ->
+                CardItem()
+                if (index == 3){
+                    Spacer(modifier = Modifier.height(5.dp))
+                }
+            }
+        }
+
     }
 }
 
 @Composable
 fun NestedScroll() {
-
-    val  items = listOf("Bread", "Snacks & Pastries","Cokes & Mutfl")
+    val items = listOf("Bread", "Snacks & Pastries", "Cokes & Mutfl")
     var selectedGener by remember { mutableStateOf("") }
 
-    LazyRow(){
-                    items(count = items.size){
-                        FoodCategory(
-                            items = items[it],
-                            selected = items[it] == selectedGener
-                        ){
-                            selectedGener = items[it]
-                        }
-                    }
-
-
+    LazyRow() {
+        items(count = items.size) {
+            FoodCategory(
+                items = items[it],
+                selected = items[it] == selectedGener
+            ) {
+                selectedGener = items[it]
+            }
+        }
     }
-
 }
 
 

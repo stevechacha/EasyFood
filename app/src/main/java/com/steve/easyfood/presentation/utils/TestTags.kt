@@ -1,4 +1,4 @@
-package com.steve.easyfood.util
+package com.steve.easyfood.presentation.utils
 
 object TestTags {
 

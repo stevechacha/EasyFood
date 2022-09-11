@@ -4,8 +4,7 @@ import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.lazy.GridCells
-import androidx.compose.foundation.lazy.LazyVerticalGrid
+import androidx.compose.foundation.lazy.*
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.*
@@ -18,13 +17,17 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import com.steve.easyfood.R
+import com.steve.easyfood.domain.model.FoodItem
 import com.steve.easyfood.presentation.component.StandardToolbar
+import com.steve.easyfood.presentation.menuscreen.CardItem
 import com.steve.easyfood.presentation.ui.theme.darkGreen
+import com.steve.easyfood.presentation.ui.theme.lightGray
 
 
 @Composable
@@ -33,7 +36,8 @@ fun HomeScreen(
     navigator: DestinationsNavigator
 ) {
     Column (
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier
+            .fillMaxSize()
             .background(darkGreen)
     ) {
         StandardToolbar(
@@ -45,10 +49,12 @@ fun HomeScreen(
                ) {
                    Text(
                        text = "Location",
+                       textAlign = TextAlign.Center,
                        style = MaterialTheme.typography.body1
                    )
                    Text(
                        text = "location2",
+                       textAlign = TextAlign.Center,
                        style = MaterialTheme.typography.body1
                    )
                }
@@ -57,6 +63,7 @@ fun HomeScreen(
            modifier = Modifier.fillMaxWidth()
        )
         // Content
+
         MainScreen()
 
     }
@@ -68,18 +75,29 @@ fun MainScreen() {
         modifier = Modifier
             .fillMaxSize()
             .clip(RoundedCornerShape(topStart = 35.dp, topEnd = 35.dp))
-            .background(Color.White)
+            .background(lightGray)
             .padding(10.dp)
     ){
-            CardRow()
-            CardRow2()
+            CardRow(
+                FoodItem(
+                    foodName = "FoodName",
+                    price = 200.0,
+                    onAdd = false
+                )
+            )
+        Spacer(modifier = Modifier.height(5.dp))
+            Categories()
     }
 }
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun CardRow() {
-    val list = listOf<String>("Meru","Meru")
+fun CardRow(
+    foodItem: FoodItem,
+    onAddClick: (Boolean) -> Unit = {}
+) {
+    val list = listOf<String>("Vegetables","Cheese Burger")
+    val price = listOf<String>("4000","7000")
 
     Row {
         LazyVerticalGrid(cells = GridCells.Fixed(2),
@@ -88,50 +106,67 @@ fun CardRow() {
                     Card(
                         backgroundColor = Color.White,
                         modifier = Modifier
-                            .padding(5.dp)
                             .fillMaxWidth()
-                            .height(170.dp)
-                            .clip(RoundedCornerShape(20.dp)),
+                            .height(185.dp)
+                            .clip(RoundedCornerShape(30.dp))
+                            .padding(5.dp),
                         elevation = 8.dp)
                     {
                         Column (
                             modifier= Modifier
                                 .fillMaxSize()
                                 .padding(5.dp)
+
+
                         ){
                             Image(painter = painterResource(id = R.drawable.foddd),
                                 contentDescription = null,
+
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .height(100.dp)
-                                    .clip(RoundedCornerShape(10.dp, 10.dp, 10.dp, 10.dp))
+                                    .clip(RoundedCornerShape(20.dp))
                             )
+                            Spacer(modifier = Modifier.height(5.dp))
                             Text(
-                                text = list[index],
+                                text = foodItem.foodName,
                                 fontWeight = FontWeight.Bold,
-                                fontSize = 18.sp,
+                                fontSize = 13.sp,
                                 style = MaterialTheme.typography.body2,
-                                color = Color.DarkGray
+                                color = Color.DarkGray,
+                                modifier = Modifier
+                                    .padding(start = 10.dp)
                             )
                             Row(
-                                modifier = Modifier.fillMaxWidth(),
-                                horizontalArrangement = Arrangement.SpaceBetween
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(start = 10.dp, end = 10.dp),
+                                horizontalArrangement =
+                                Arrangement.SpaceBetween
                             ){
-
-                                Text(text = "Ksh.4000",
-                                    fontSize = 18.sp,
-                                    color = darkGreen,
+                                Text(
+                                    text = foodItem.price.toString(),
                                     maxLines = 1,
-                                    style = MaterialTheme.typography.body1
+                                    fontSize = 15.sp,
+                                    style = MaterialTheme.typography.body2,
+                                    color = darkGreen,
                                 )
+
 
                                 Icon(
                                     Icons.Filled.Add,"Add",
                                     tint = Color.White,
                                     modifier = Modifier
                                         .clip(CircleShape)
-                                        .background(darkGreen)
+                                        .background(darkGreen),
+
                                 )
+                                Button(onClick = {
+
+                                    onAddClick(foodItem.onAdd)
+                                }) {
+
+                                }
                             }
                         }
                     }
@@ -144,7 +179,7 @@ fun CardRow() {
 
 @OptIn(ExperimentalFoundationApi::class)
 @Composable
-fun CardRow2() {
+fun Categories() {
     Column {
         Text(text = "Browser by Categories",
             color= Color.Black,
@@ -152,48 +187,59 @@ fun CardRow2() {
             modifier = Modifier.padding(5.dp)
 
         )
-        val list = listOf<String>("Samosa","Pizza","Matumbo","Meat","Chapati","Mengo",)
+        val list = listOf<String>("Pizza","Vegetables","Samosa & Chapati","Cocoa Juice","Pilau","Beef",)
+        val price = listOf<String>("4500","1200","1000","3000","1500","2000",)
 
         LazyVerticalGrid(cells = GridCells.Fixed(2),
             content = {
                 items(list.size){ index ->
-
                     Card(
                         backgroundColor = Color.White,
                         modifier = Modifier
-                            .padding(5.dp)
                             .fillMaxWidth()
-                            .height(170.dp)
-                            .clip(RoundedCornerShape(20.dp)),
+                            .height(185.dp)
+                            .clip(RoundedCornerShape(30.dp))
+                            .padding(8.dp),
                         elevation = 8.dp)
                     {
                         Column (
                             modifier= Modifier
                                 .fillMaxSize()
                                 .padding(5.dp)
+
+
                         ){
                             Image(painter = painterResource(id = R.drawable.foddd),
                                 contentDescription = null,
+
                                 modifier = Modifier
                                     .fillMaxWidth()
                                     .height(100.dp)
                                     .clip(RoundedCornerShape(20.dp))
                             )
+                            Spacer(modifier = Modifier.height(5.dp))
                             Text(
                                 text = list[index],
                                 fontWeight = FontWeight.Bold,
-                                fontSize = 18.sp,
-                                color = Color.DarkGray
+                                fontSize = 13.sp,
+                                style = MaterialTheme.typography.body2,
+                                color = Color.DarkGray,
+                                modifier = Modifier
+                                    .padding(start = 10.dp)
                             )
                             Row(
-                                modifier= Modifier.fillMaxWidth(),
-                                horizontalArrangement = Arrangement.SpaceBetween
+                                modifier = Modifier
+                                    .fillMaxWidth()
+                                    .padding(start = 10.dp, end = 10.dp),
+                                horizontalArrangement =
+                                Arrangement.SpaceBetween
                             ){
-
-                                Text(text = "Ksh.4000",
-                                    fontSize = 18.sp,
-                                    color = darkGreen,
+                                Text(
+                                    text = price[index],
                                     maxLines = 1,
+                                    fontSize = 15.sp,
+                                    style = MaterialTheme.typography.body2,
+                                    color = darkGreen,
                                 )
 
                                 Icon(
@@ -203,17 +249,10 @@ fun CardRow2() {
                                         .clip(CircleShape)
                                         .background(darkGreen)
                                 )
-
                             }
-
                         }
-
-
                     }
-
                 }
-
-
             }
 
         )

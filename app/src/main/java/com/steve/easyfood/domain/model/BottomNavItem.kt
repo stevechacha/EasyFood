@@ -25,7 +25,6 @@ sealed class BottomNavItem(var title: String, var icon: Int, var destination: De
         icon = R.drawable.ic_menu,
         destination = MenuDestination
     )
-
     object More: BottomNavItem(
         title = "More",
         icon = R.drawable.ic_more,

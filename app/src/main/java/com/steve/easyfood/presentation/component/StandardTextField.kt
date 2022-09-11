@@ -23,7 +23,7 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import com.steve.easyfood.util.TestTags
+import com.steve.easyfood.presentation.utils.TestTags
 import com.steve.easyfood.R
 
 @Composable

@@ -48,11 +48,11 @@ val Typography = Typography(
     caption = TextStyle(
         fontFamily = poppin,
         fontWeight = FontWeight.Normal,
-        fontSize = 12.sp
+        fontSize = 16.sp
     ),
     button = TextStyle(
-        fontFamily = FontFamily.Default,
-        fontWeight = FontWeight.Normal,
+        fontFamily = poppin,
+        fontWeight = FontWeight.SemiBold,
         fontSize = 12.sp
     )
 

@@ -8,7 +8,6 @@ import timber.log.Timber
 class EasyFoodApp: Application() {
     override fun onCreate() {
         super.onCreate()
-
         Timber.plant(Timber.DebugTree())
     }
 }
