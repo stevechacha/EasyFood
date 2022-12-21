@@ -1,7 +1,7 @@
 package com.steve.easyfood.di
 
-import com.steve.easyfood.data.remote.FoodApi
-import com.steve.easyfood.util.Constants.BASE_URL
+import com.steve.easyfood.core.presentation.data.remote.FoodApi
+import com.steve.easyfood.core.presentation.util.Constants.BASE_URL
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
